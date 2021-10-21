@@ -177,6 +177,12 @@ return [
         App\Providers\FortifyServiceProvider::class,
         App\Providers\JetstreamServiceProvider::class,
 
+        /**
+         * Module service providers
+         */
+
+        \Modules\Campaign\CampaignServiceProvider::class,
+
     ],
 
     /*

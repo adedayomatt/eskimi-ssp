@@ -12,15 +12,15 @@
                         <div class="flex">
                             <!-- Logo -->
                             <div class="flex-shrink-0 flex items-center">
-                                <Link :href="route('dashboard')">
-                                    <jet-application-mark class="block h-9 w-auto" />
+                                <Link :href="route('index')">
+                                    <app-logo class="block h-9 w-auto" />
                                 </Link>
                             </div>
 
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <jet-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
-                                    Dashboard
+                                <jet-nav-link :href="route('campaign.list')" :active="route().current('campaign.list')">
+                                    Campaigns
                                 </jet-nav-link>
                             </div>
                         </div>
@@ -142,8 +142,8 @@
                 <!-- Responsive Navigation Menu -->
                 <div :class="{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}" class="sm:hidden">
                     <div class="pt-2 pb-3 space-y-1">
-                        <jet-responsive-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
-                            Dashboard
+                        <jet-responsive-nav-link :href="route('campaign.list')" :active="route().current('campaign.list')">
+                            Campaigns
                         </jet-responsive-nav-link>
                     </div>
 
@@ -225,7 +225,9 @@
 
             <!-- Page Content -->
             <main>
-                <slot></slot>
+                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                    <slot></slot>
+                </div>
             </main>
         </div>
     </div>
@@ -240,6 +242,7 @@
     import JetNavLink from '@/Jetstream/NavLink.vue'
     import JetResponsiveNavLink from '@/Jetstream/ResponsiveNavLink.vue'
     import { Head, Link } from '@inertiajs/inertia-vue3';
+    import AppLogo from '@/App/Logo.vue'
 
     export default defineComponent({
         props: {
@@ -255,11 +258,21 @@
             JetNavLink,
             JetResponsiveNavLink,
             Link,
+            AppLogo
         },
 
         data() {
             return {
                 showingNavigationDropdown: false,
+            }
+        },
+
+        computed: {
+            pageProps() {
+                return this.$page.props;
+            },
+            flash() {
+                this.$page.props.flash; 
             }
         },
 
@@ -275,6 +288,26 @@
             logout() {
                 this.$inertia.post(route('logout'));
             },
+        },        
+
+        watch: {
+            $page: {
+                immediate: true,
+                handler(page) {
+
+                    const flash = page.props.flash
+
+                    if(!flash) return;
+
+                    if(flash.success){
+                        toastr.success(flash.success);
+                    }
+
+                    if(flash.error){
+                        toastr.error(flash.error);
+                    }
+                }
+            }
         }
     })
 </script>

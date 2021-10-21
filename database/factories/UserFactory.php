@@ -38,14 +38,14 @@ class UserFactory extends Factory
      *
      * @return \Illuminate\Database\Eloquent\Factories\Factory
      */
-    public function unverified()
-    {
-        return $this->state(function (array $attributes) {
-            return [
-                'email_verified_at' => null,
-            ];
-        });
-    }
+    // public function unverified()
+    // {
+    //     return $this->state(function (array $attributes) {
+    //         return [
+    //             'email_verified_at' => null,
+    //         ];
+    //     });
+    // }
 
     /**
      * Indicate that the user should have a personal team.
@@ -65,5 +65,18 @@ class UserFactory extends Factory
                 }),
             'ownedTeams'
         );
+    }
+
+    /**
+     * Configure the model factory.
+     *
+     * @return $this
+     */
+    public function configure()
+    {
+        return $this->afterCreating(function (User $user) {
+            // Create a default API Token
+            $user->createToken('Default', ['*']);
+        });
     }
 }
