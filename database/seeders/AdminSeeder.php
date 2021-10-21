@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 
 class AdminSeeder extends Seeder
 {
+    
     /**
      * Run the database seeds.
      * 
@@ -15,11 +16,13 @@ class AdminSeeder extends Seeder
      */
     public function run()
     {
-        User::create([
+        $admin = [
             'name' => 'Adedayo Matthews',
             'email' => 'adedayomatthews@eskimi-ssp.test',
             'password' => Hash::make('eskimi'),
             'email_verified_at' => now()
-        ]);
+        ];
+        
+        User::firstOrCreate(['email' => $admin['email']], $admin);
     }
 }
