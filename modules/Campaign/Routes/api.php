@@ -7,8 +7,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->group(function(){
 
     // List all advertising campaigns and their info
-   Route::get('/', \Modules\Campaign\Controllers\CampaignList::class);
+   Route::get('/', \Modules\Campaign\Controllers\CampaignList::class)->name('list');
    
     //  Store new advertising campaign  
-   Route::post('/store', \Modules\Campaign\Controllers\CampaignStore::class);
+   Route::post('/store', \Modules\Campaign\Controllers\CampaignStore::class)->name('store');
 });

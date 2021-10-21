@@ -72,11 +72,11 @@ class UserFactory extends Factory
      *
      * @return $this
      */
-    public function configure()
-    {
-        return $this->afterCreating(function (User $user) {
-            // Create a default API Token
-            $user->createToken('Default', ['*']);
-        });
-    }
+    // public function configure()
+    // {
+    //     return $this->afterCreating(function (User $user) {
+    //         // Create a default API Token
+    //         $user->createToken('Default', ['*']);
+    //     });
+    // }
 }

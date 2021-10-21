@@ -59,6 +59,7 @@ class CampaignServiceProvider extends ServiceProvider
     {
         Route::middleware('api')
             ->prefix('api/'.self::PREFIX)
+            ->name('api.campaign.')
             ->group(dirname(__FILE__). DIRECTORY_SEPARATOR. 'Routes/api.php');
     }
 }

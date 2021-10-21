@@ -23,10 +23,10 @@ class CampaignFactory extends Factory
     public function definition()
     {
         $period = $this->faker->numberBetween(5, 30);
-        $budget = $this->faker->randomFloat(2);
+        $budget = $this->faker->randomFloat(2, 20, 100);
         
         $start = $this->faker->date();
-        $end = (new Carbon($start))->add("{$period} days");
+        $end = (new Carbon($start))->add("{$period} days")->format('Y-m-d');
 
         return [
             'name' => $this->faker->sentence(2),
