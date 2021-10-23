@@ -12,7 +12,7 @@ class CampaignStore extends Controller
 
     public function __construct()
     {
-
+        $this->middleware('can:create,'.Campaign::class);
     }
 
     public function __invoke(CampaignSaveRequest $request, Campaign $model)

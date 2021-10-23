@@ -13,7 +13,7 @@ class CampaignList extends Controller
 
     public function __construct()
     {
-
+        $this->middleware('can:read,'.Campaign::class);
     }
 
     public function __invoke(Request $request, Campaign $model)
