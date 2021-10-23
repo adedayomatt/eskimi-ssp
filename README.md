@@ -141,7 +141,8 @@ Login to the system with the credentials already seeded.
 > **Email:** adedayomatthews@eskimi-ssp.test
 > **Password:** eskimi
 
-For API authentication, an access token needs to be created at `http://localhost/user/api-tokens`. Copy the token and pass it as Bearer token in request header.
+For API authentication, an access token needs to be created at `http://localhost/user/api-tokens` with the right permissions; by default, `read` and `create` permissions are added to allow listing of campaigns and creating new campaign respectively via API.
+Copy the token and pass it as Bearer token in request header.
 
 #### API Routes
 
