@@ -3,6 +3,7 @@
 namespace Modules\Campaign\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Cache;
 use Modules\Campaign\Models\Campaign;
 use Symfony\Component\HttpFoundation\Response;
 use Modules\Campaign\Requests\CampaignSaveRequest;
