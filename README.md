@@ -1,7 +1,7 @@
 # Eskimi SSP
 ### Adedayo Matthews
 
-This a submission of a task for the role of Senior full-stack PHP developer at [Eskimi](https://www.eskimi.com/). 
+This a submission of task for the role of Senior full-stack PHP developer at [Eskimi](https://www.eskimi.com/). 
 Task description can be found [here](https://docs.google.com/document/d/1t3bEAhCUEc52BB-plKa19DDGXPvHF4hHMtJf2VuZg9o/edit).
 
 ## Features
@@ -80,7 +80,7 @@ docker-compose exec workspace bash
 
 Continue running the following commands In the workspace bash...
 
-#### Install composer depencies
+#### Install composer dependencies
 
 ```
 composer install
@@ -154,7 +154,7 @@ Copy the token and pass it as Bearer token in request header.
 API | Path | Verb
 --- | --- | ---
 Authenticated user | /api/user | GET
-List of campaigns | /api/campaigns/ | GET
+List of campaigns | /api/campaigns | GET
 Single campaign | /api/campaigns/{campaign_id} | GET
 Create new campaign | /api/campaigns/store | POST
 
@@ -176,13 +176,13 @@ php artisan test
 
 ## Design Structure
 
-To ensure the code extensibility and maintainablility, the code base was designed in modules such that other features can be built in as separate modules and be maintained independently. To achieve this, the `modules` directly was added to Laravel file structure which would house different modules. The campaign module was created and structured to contain models, controllers, routes, migrations, requests, views and components for campaign.
-The [campaign service provider](https://github.com/adedayomatt/eskimi-ssp/blob/main/modules/Campaign/CampaignServiceProvider.php) was created to configure the module and is registered to the application in [`config/app`](https://github.com/adedayomatt/eskimi-ssp/blob/79e118a97fa77e1d39984bd405bf8b1de5d62f85/config/app.php#L184)
+To ensure the code extensibility and maintainablility, the code base was designed in modules such that other features can be built in as separate modules and be maintained independently. To achieve this, the `modules` directly was added to Laravel file structure which would house different modules in the application. The campaign module was created and structured to contain models, controllers, routes, migrations, requests, views and components for campaign.
+The [campaign service provider](https://github.com/adedayomatt/eskimi-ssp/blob/main/modules/Campaign/CampaignServiceProvider.php) was created to configure the module and is registered with the application in [`config/app`](https://github.com/adedayomatt/eskimi-ssp/blob/79e118a97fa77e1d39984bd405bf8b1de5d62f85/config/app.php#L184)
 
 > The modules directory was added to the psr-4 autoload with a namespace [here](https://github.com/adedayomatt/eskimi-ssp/blob/79e118a97fa77e1d39984bd405bf8b1de5d62f85/composer.json#L31)
 
 
-==================================================================
+=============================================================================================================================
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
