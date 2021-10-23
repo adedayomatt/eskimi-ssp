@@ -1,7 +1,7 @@
 # Eskimi SSP
 ### Adedayo Matthews
 
-This a submission of task for the role of Senior full-stack PHP developer at [Eskimi](https://www.eskimi.com/). 
+This a submission of a task for the role of Senior full-stack PHP developer at [Eskimi](https://www.eskimi.com/). 
 Task description can be found [here](https://docs.google.com/document/d/1t3bEAhCUEc52BB-plKa19DDGXPvHF4hHMtJf2VuZg9o/edit).
 
 ## Features
@@ -18,6 +18,7 @@ Task description can be found [here](https://docs.google.com/document/d/1t3bEAhC
 - [Vue3](https://v3.vuejs.org/) - Javascript frontend framework
 - [Nginx](https://nginx.com/) - An open source web server
 - [MySQL](https://mysql.com/) - Database service
+- [Redis](https://redis.io/) - Data storage for cache.
 
 ## Dependencies
 
@@ -65,10 +66,10 @@ copy .env.example .env
 
 #### Create and start the containers
 
-We need nginx, mysql and workspace containers running. The workspace container already contains necessary softwares requires to successfully run a Laravel project, e.g PHP CLI, Composer, Node, e.t.c.
+We need nginx, mysql, redis and workspace containers running. The workspace container already contains necessary softwares requires to successfully run a Laravel project, e.g PHP CLI, Composer, Node, e.t.c.
 
 ```
-docker-compose up -d nginx mysql workspace
+docker-compose up -d nginx mysql workspace redis
 ```
 
 #### Open workspace bash
@@ -131,6 +132,10 @@ DB_HOST=mysql
 DB_DATABASE=default
 DB_USERNAME=root
 DB_PASSWORD=root
+
+CACHE_DRIVER=redis
+REDIS_HOST=redis
+QUEUE_HOST=beanstalkd
 ```
 The app should now be running at the address:
 ```
@@ -150,6 +155,7 @@ API | Path | Verb
 --- | --- | ---
 Authenticated user | /api/user | GET
 List of campaigns | /api/campaigns/ | GET
+Single campaign | /api/campaigns/{campaign_id} | GET
 Create new campaign | /api/campaigns/store | POST
 
 ## Testing
@@ -174,7 +180,9 @@ To ensure the code extensibility and maintainablility, the code base was designe
 The [campaign service provider](https://github.com/adedayomatt/eskimi-ssp/blob/main/modules/Campaign/CampaignServiceProvider.php) was created to configure the module and is registered to the application in [`config/app`](https://github.com/adedayomatt/eskimi-ssp/blob/79e118a97fa77e1d39984bd405bf8b1de5d62f85/config/app.php#L184)
 
 > The modules directory was added to the psr-4 autoload with a namespace [here](https://github.com/adedayomatt/eskimi-ssp/blob/79e118a97fa77e1d39984bd405bf8b1de5d62f85/composer.json#L31)
-> 
+
+
+==================================================================
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
