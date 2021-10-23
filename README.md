@@ -1,7 +1,7 @@
 # Eskimi SSP
 ### Adedayo Matthews
 
-This a submission of a task for the role of Senior full-stack PHP developer at [Eskimi](https://www.eskimi.com/). 
+This a submission of task for the role of Senior full-stack PHP developer at [Eskimi](https://www.eskimi.com/). 
 Task description can be found [here](https://docs.google.com/document/d/1t3bEAhCUEc52BB-plKa19DDGXPvHF4hHMtJf2VuZg9o/edit).
 
 ## Features
@@ -26,6 +26,7 @@ In addition to the Laravel framework, the following dependencies were also used 
 - [Jetstream](https://jetstream.laravel.com/) - Application starter kit for Laravel.
 - [Sanctum](https://laravel.com/docs/8.x/sanctum) - Laravel package that provides a featherweight authentication system.
 - [Ziggy](https://github.com/tighten/ziggy) - Provides helper functions to access all of our named Laravel routes from the frontend.
+- [TailwindCSS](https://tailwindcss.com/) - A utility-first CSS framework.
 
 ## Installation and deployment
 
