@@ -20,7 +20,10 @@ class CampaignStore extends Controller
          /** @var Campaign $campaign */
         $campaign = $model->query()->create($request->validated());
 
-        // If accessed via API
+        // clear cache
+        Cache::tags('campaign-pages')->flush();
+
+        // If requested via API
         if($request->wantsJson()) {
             return response()->json($campaign, Response::HTTP_OK); 
         }

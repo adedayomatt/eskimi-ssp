@@ -17,8 +17,8 @@ class CampaignShow extends Controller
     }
 
     public function __invoke(Request $request, Campaign $campaign)
-    {
-        // If accessed via API
+    {     
+        // If requested via API
         if($request->wantsJson()) {
             return response()->json($campaign, Response::HTTP_OK); 
         }
