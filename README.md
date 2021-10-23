@@ -135,10 +135,20 @@ The app should now be running at the address:
 ```
 http://localhost
 ```
-#### Login credentials
-Login to the system with the credentials already seeded
+#### Authentication
+Login to the system with the credentials already seeded.
 > **Email:** adedayomatthews@eskimi-ssp.test
 > **Password:** eskimi
+
+For API authentication, an access token needs to be created at `http://localhost/user/api-tokens`. Copy the token and pass it as Bearer token in request header.
+
+#### API Routes
+
+API | Path | Verb
+--- | --- | ---
+Authenticated user | /api/user | GET
+List of campaigns | /api/campaigns/ | GET
+Create new campaign | /api/campaigns/store | POST
 
 ## Testing
 The following tests are available:
