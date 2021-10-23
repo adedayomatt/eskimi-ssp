@@ -22,6 +22,12 @@
                                 <jet-nav-link :href="route('campaign.list')" :active="route().current('campaign.list')">
                                     Campaigns
                                 </jet-nav-link>
+                                <jet-nav-link
+                                v-if="$page.props.jetstream.hasApiFeatures"
+                                :href="route('api-tokens.index')" 
+                                :active="route().current('api-tokens.index')">
+                                    API
+                                </jet-nav-link>
                             </div>
                         </div>
 
